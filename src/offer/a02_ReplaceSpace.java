@@ -3,7 +3,7 @@ package offer;
 /**
  * Created by jiashilin on 2017/5/13.
  */
-public class ReplaceSpace {
+public class a02_ReplaceSpace {
     /*
 问题1：替换字符串，是在原来的字符串上做替换，还是新开辟一个字符串做替换！
       如果是可以使用新的字符串做计算的话，需要额外的存储空间，不是该题目原意。
