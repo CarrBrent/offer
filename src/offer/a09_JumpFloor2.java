@@ -4,7 +4,7 @@ package offer;
  * Created by jiashilin on 2017/5/15.
  */
 
-public class a_09JumpFloor2 {
+public class a09_JumpFloor2 {
     public static  int JumpFloorII(int target) {
         if (target<1) {
             return 0;
