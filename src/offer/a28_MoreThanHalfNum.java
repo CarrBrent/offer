@@ -7,6 +7,7 @@ import java.util.HashMap;
  * Created by jiashilin on 2017/5/23.
  */
 
+//28.数组中出现次数超过长度一般的数字
 public class a28_MoreThanHalfNum {
     public int MoreThanHalfNum_Solution(int [] array) {
         if (array == null || array.length==0) {
