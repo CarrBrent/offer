@@ -33,50 +33,61 @@ public class a29_GetLeastNumbers {
     }
     //从最后一个非叶子节点开始，一次执行调整算法，list[i]，逐次i--，i=length/2
     public void bulidHeap(int [] list, int length){
-        for (int i = length/2; i >=0 ; i--) {
+        for (int i = length/2; i>0 ; i--) {
             adjust(list,i,length);
         }
     }
     private void adjust(int[] list, int s, int length) {
-        int temp,max;
+        int max,temp;
         int left=getLeft(s);
         int right=getRight(s);
-        if (left<=length&&list[left-1]>list[s-1]){
-            max = left;
-        }
-        else {
-            max=s;
-        }
-        if (right<=length&&list[right-1]>list[max-1]) {
-            max=right;
-        }
-        else {
-            ;
-        }
-        if (max!=s) {
-            temp = list[s-1];
-            list[s-1]=list[max-1];
-            list[max-1]=temp;
-            adjust(list, max, length);
+        //分不同情况进行考虑，left、right都在length之内的情况
+        if (left <= length && right <= length) {
+            if (list[left-1]>=list[right-1]){
+                max = left;
+            }else {
+                max = right;
+            }
+            if (list[s-1] >= list[max-1]) {
+                return;
+            }else{
+                temp = list[s-1];
+                list[s-1] = list[max-1];
+                list[max-1] = temp;
+                adjust(list,max,length);
+            }
+
+        }//left在length之内，但是right不在的情况
+        else if(left == length){
+            if (list[left-1] <= list[s-1]) {
+                return;
+            }else{
+                temp = list[s-1];
+                list[s-1]= list[left-1];
+                list[left-1] = temp;
+            }
+        }else{//left、right都不在length之内的情况
+            return;
         }
 
     }
 
     public ArrayList<Integer> GetLeastNumbers_Solution(int [] input, int k) {
         ArrayList<Integer> result = new ArrayList<Integer>();
-        if (input == null || input.length<=1 || k>=input.length) {
+        if (input == null || input.length<=1 || k>input.length) {
             return result;
         }
         bulidHeap(input,k);
-        for (int i = k; i <= input.length ; i++) {
-            if (input[i] < input[0]) {
-                input[0] = input[i];
+        for (int i = k; i <input.length ; i++) {
+            if (input[0] > input[i]) {
+                input[0]=input[i];
                 adjust(input,1,k);
             }
         }
-        for (int i = 0; i < k ; i++) {
+        for (int i = 0; i <k ; i++) {
             result.add(input[i]);
         }
+
         return result;
     }
 }
