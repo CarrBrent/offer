@@ -10,6 +10,7 @@ public class a46_LastRemaining {
         if (n<1||m<1){
             return -1;
         }
+
         int position = 0;
         for (int i = 2; i <=n ; i++) {
             position = (position+m)%i;
