@@ -5,7 +5,7 @@ package offer;
  */
 public class a16_MegeList {
     public ListNode Merge(ListNode list1,ListNode list2) {
-        //
+        //判断如果有一个节点是null，则可以直接返回另一个节点即可
         if (list1==null){
             return list2;
         }
