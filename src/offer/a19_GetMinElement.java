@@ -14,8 +14,9 @@ public class a19_GetMinElement {
             min.push(node);
         }else {
             stack.push(node);
-            int m = min.pop();
-            min.push(m);
+            int m =min.peek();//peek()和pop()都会返回stack顶部的元素，但是peek不会将其在stack中删除
+            //int m = min.pop();
+            //min.push(m);
             if (m>=node) {
                 min.push(node);
             }else{
